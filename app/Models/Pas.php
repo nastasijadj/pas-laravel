@@ -10,6 +10,13 @@ class Pas extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'sifra',
+        'rasa',
+        'godine',
+        'stanovnik_id',
+    ];
+
     public function stanovnik()
     {
         return $this->belongsTo(Stanovnik::class);

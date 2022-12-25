@@ -11,6 +11,15 @@ class Stanovnik extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'ime',
+        'prezime',
+        'jmbg',
+        'adresa',
+        'broj_ljubimaca',
+        'opstina_id',
+    ];
+
     public function opstina()
     {
         return $this->belongsTo(Opstina::class);

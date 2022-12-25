@@ -21,7 +21,7 @@ class StanovnikResource extends JsonResource
             'JMBG - ' => $this->jmbg,
             'Adresa - ' => $this->adresa,
             'Broj ljubimaca - ' => $this->broj_ljubimaca,
-            'Opstina - ' => new OpstinaResource($this->opstina_id)
+            'Opstina - ' => new OpstinaResource($this->opstina)
         ];
     }
 }

@@ -10,6 +10,12 @@ class Opstina extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'naziv',
+        'grad',
+        'broj_stanovnika'
+    ];
+
     public function stanovnici()
     {
         return $this->hasMany(Stanovnik::class);

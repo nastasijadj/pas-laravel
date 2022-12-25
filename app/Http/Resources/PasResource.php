@@ -19,7 +19,7 @@ class PasResource extends JsonResource
             'Šifra - ' => $this->sifra,
             'Rasa - ' => $this->rasa,
             'Godine - ' => $this->godine,
-            'Stanovnik - ' => new StanovnikResource($this->stanovnik_id),
+            'Stanovnik - ' => new StanovnikResource($this->stanovnik),
         ];
     }
 }
