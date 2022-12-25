@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\APIAuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StanController;
@@ -16,12 +17,27 @@ use App\Http\Controllers\PasController;
 |
 */
 
+
+
 Route::get('stanovnici', [StanController::class, 'index']);
-Route::delete('stanovnici/{stanovnik}', [StanController::class, 'destroy']);
 Route::get('stanovnici/{stanovnik}', [StanController::class, 'show']);
 Route::get('psi', [PasController::class, 'index']);
 Route::get('psi/{pas}', [PasController::class, 'show']);
-Route::post('psi', [PasController::class, 'store']);
+
+
+
+Route::post('registeruser', [APIAuthController::class, 'registerUser']);
+Route::post('loginuser', [APIAuthController::class, 'loginUser']);
+
+
+Route::group(['middleware' => ['auth:sanctum']], function () {
+    Route::post('logoutuser', [APIAuthController::class, 'logoutUser']);
+    Route::delete('stanovnici/{stanovnik}', [StanController::class, 'destroy']);
+    Route::post('psi', [PasController::class, 'store']);
+});
+
+
+
 
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
